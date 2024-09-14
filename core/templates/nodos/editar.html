@@ -1,0 +1,24 @@
+{% block content %}
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <form method="POST" action="{% url 'editar' object.id %}">
+      <div class="modal-header">
+        <h5 class="modal-title flex-fill">Editar nodo</h5>
+        <button type="button" class="close" onclick="$('#modaleditar').modal('hide');" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          {% csrf_token %}
+          {{form.as_p}}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-sm" onclick="$('#modaleditar').modal('hide');">Cancelar</button>
+        <button type="submit" class="btn btn-primary btn-sm">Editar</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

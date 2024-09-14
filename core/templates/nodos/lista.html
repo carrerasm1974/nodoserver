@@ -1,0 +1,89 @@
+
+{% extends "master.html" %}
+{% load static %}
+
+
+{% block title %} Nodos {% endblock %}
+
+{% block main %}
+
+<div class="p-2 table-responsive small borde panel-izquierdo">
+{% comment %} 
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th scope="col">Grupo</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Llave</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nodo in object_list %}
+            <tr>
+                <td>{{ nodo.grupo }}</td>
+                <td>{{ nodo.model }}</td>
+                <td>{{ nodo.llave }}</td>
+                <td>
+                    <a type="button" class="btn btn-primary btn-sm" href="{% url 'detalle' nodo.id %}">Ver</a>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" onclick="abrir_editar('{% url 'editar' nodo.id %}')">Editar</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" onclick="abrir_borrar('{% url 'borrar' nodo.id %}')">Eliminar</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" onclick="abrir_crear('{% url 'crear' %}')">Crear</button> {% endcomment %}
+
+</div>
+
+<div class="d-flex flex-column p-2 borde flex-grow-1 ">
+    <div class="d-flex color sep-bloque">
+        <div class="flex-fill p-2 borde color">Item 2</div>
+        <div class="flex-fill p-2 borde color">Item 3</div>
+    </div>
+    <div class="d-flex align-content-around flex-wrap sep-bloque color">
+        {% for nodo in object_list %}
+            <div class="card borde" style="width: 22rem;">
+                <img class="card-img-top card_nodo" src="{% static 'archivos/layout.svg' %}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ nodo.llave }}</h5>
+                    <p class="card-text">{{ nodo.grupo }} {{ nodo.model }}</p>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" onclick="abrir_editar('{% url 'editar' nodo.id %}')">Editar</button>
+                    <a type="button" class="btn btn-outline-primary btn-sm" href="{% url 'detalle' nodo.id %}">Ver</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="p-2 borde chart-1 sep-bloque color">
+        {% comment %} <img class="svglayout" src="{% static 'archivos/layout.svg' %}" height=200> {% endcomment %}
+    </div>
+
+    
+</div>
+
+<div class="modal fade" id="modalcrear" tabindex="-1" role="dialog"></div>
+<div class="modal fade" id="modaleditar" tabindex="-1" role="dialog"></div> 
+<div class="modal fade" id="modalborrar" tabindex="-1" role="dialog"></div> 
+
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" onclick="abrir_crear('{% url 'crear' %}')">Crear</button>
+
+{% endblock %}
+
+
+{% block extra_js %}
+    <script type="text/javascript">
+    function abrir_crear(url) {
+        $('#modalcrear').load(url, function(){  $(this).modal('show') });
+    }
+    function abrir_editar(url) {
+        $('#modaleditar').load(url, function(){  $(this).modal('show') });
+    }
+    function abrir_borrar(url) {
+        $('#modalborrar').load(url, function(){  $(this).modal('show') });
+    }
+    </script>
+{% endblock extra_js %}
+

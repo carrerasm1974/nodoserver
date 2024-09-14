@@ -1,0 +1,24 @@
+{% block content %}
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <form method="POST" action="{% url 'borrar' object.id %}">
+        
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title flex-fill">Borrar nodo</h5>
+          <button type="button" class="close" onclick="$('#modalborrar').modal('hide');" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            {% csrf_token %}
+            <p>Borrar <strong>{{ object.llave }} </strong> de la lista? </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btn-sm" onclick="$('#modalborrar').modal('hide');">Cancelar</button>
+          <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
+        </div>
+        </div>
+      </div>
+    </form>
+</div>
+{% endblock %} 

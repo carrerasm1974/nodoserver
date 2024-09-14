@@ -1,0 +1,45 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="{% static 'estatico.css' %}">
+
+
+<head>
+        <title>Nodo</title>
+
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <script defer src="{% static 'fontawesome/js/all.min.js' %}"></script>
+
+</head>
+
+<body>
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+                <div class="container-fluid">
+                        <a class="navbar-brand" href="/">
+                                <img src="{% static 'archivos/logo_nodo.svg' %}" alt="Bootstrap" height="36">
+                        </a>
+                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="/lista">Nodos</a>
+                        <a class="nav-link" href="/usuarios">Usuarios</a>
+                        <a class="nav-link" href="/testes">Test</a>
+                    </div>
+                  </div>
+                </div>
+        </nav>
+        <div class="container-fluid d-flex flex-row">
+                {% block main %}
+                {% endblock %}
+        </div>
+
+        {% comment %} {% include "footer.html" %} {% endcomment %}
+</body>
+
+<script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+{% block extra_js %}{% endblock extra_js %}
+</html>
