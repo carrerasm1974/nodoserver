@@ -49,7 +49,7 @@
             <div class="card borde" style="width: 22rem;">
                 <img class="card-img-top card_nodo" src="{% static 'archivos/layout.svg' %}">
                 <div class="card-body">
-                    <h5 class="card-title">{{ nodo.llave }}</h5>
+                    <h5 class="card-title">{{ nodo.id }} {{ nodo.llave }}</h5>
                     <p class="card-text">{{ nodo.grupo }} {{ nodo.model }}</p>
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" onclick="abrir_editar('{% url 'editar' nodo.id %}')">Editar</button>
                     <a type="button" class="btn btn-outline-primary btn-sm" href="{% url 'detalle' nodo.id %}">Ver</a>

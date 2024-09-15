@@ -5,7 +5,7 @@
 
 {% block main %}
 
-<div class="p-2 table-responsive small borde panel-izquierdo">
+{% comment %} <div class="p-2 table-responsive small borde panel-izquierdo">
 
     <table class="table table-striped table-sm">
         <thead>
@@ -77,10 +77,12 @@
     </div>
     <div class="p-2 borde chart-1 sep-bloque color">
         {% comment %} <img class="svglayout" src="{% static 'archivos/layout.svg' %}" height=200> {% endcomment %}
-    </div>
+    {% comment %} </div>
     <div class="p-2 borde chart-1 sep-bloque color">Item 5</div>
 
     
-</div>
+</div> {% endcomment %} 
   
+
+
 {% endblock %}
